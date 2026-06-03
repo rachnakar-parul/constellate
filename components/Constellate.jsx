@@ -1,4 +1,5 @@
 "use client";
+import { supabase } from "../lib/supabase";
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 
 const P = { bg: "#0F172A", night: "#1E293B", lav: "#C4B5FD", gold: "#FDE68A", rose: "#FBCFE8", ice: "#BFDBFE", mist: "#F8FAFC" };
@@ -1497,14 +1498,21 @@ function Afterglow({ color, onDone }) {
 function SignInOverlay({ onSignIn, onSkip }) {
   const [signingIn, setSigningIn] = useState(false);
 
-  const handleAuth = (provider) => {
-    setSigningIn(true);
-    // In production: supabase.auth.signInWithOAuth({ provider })
-    // For now, simulate auth
-    setTimeout(() => {
-      onSignIn({ provider, id: `user-${Date.now()}`, name: provider === "google" ? "You" : "You" });
-    }, 800);
-  };
+  const handleAuth = async () => {
+  setSigningIn(true);
+
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: window.location.origin
+    }
+  });
+
+  if (error) {
+    console.error(error);
+    setSigningIn(false);
+  }
+};
 
   return (
     <div style={{
@@ -1551,12 +1559,6 @@ function SignInOverlay({ onSignIn, onSkip }) {
         }}>
           Your sky is yours.
         </p>
-        <p style={{
-          fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300,
-          color: P.mist, opacity: 0.4, lineHeight: 1.6, margin: "0 0 40px",
-        }}>
-          Sign in to keep it safe across devices.
-        </p>
 
         {signingIn ? (
           <div style={{ animation: "slowFade 0.5s ease" }}>
@@ -1569,8 +1571,20 @@ function SignInOverlay({ onSignIn, onSkip }) {
           </div>
         ) : (
           <>
+
+          <p style={{
+           fontSize: "14px",
+           lineHeight: 1.6,
+           color: P.mist,
+           opacity: 0.85,
+           marginBottom: 28,
+           }}>
+           Sign in with Google to save your progress and help us improve Constellate.<br /><br />
+           The people, memories, and letters in your sky never leave your device and are not stored by us.
+          </p>
+
             {/* Google */}
-            <button onClick={() => handleAuth("google")} style={{
+            <button onClick={handleAuth} style={{
               width: "100%", padding: "15px 20px", marginBottom: 12,
               background: `linear-gradient(135deg, rgba(248,250,252,0.08), rgba(248,250,252,0.03))`,
               border: `1px solid ${P.mist}18`, borderRadius: "14px",
@@ -1590,26 +1604,6 @@ function SignInOverlay({ onSignIn, onSkip }) {
                 fontFamily: "'Cormorant Garamond', serif", fontSize: "15px",
                 color: P.mist, opacity: 0.7, fontStyle: "italic",
               }}>continue with Google</span>
-            </button>
-
-            {/* Apple */}
-            <button onClick={() => handleAuth("apple")} style={{
-              width: "100%", padding: "15px 20px", marginBottom: 32,
-              background: `linear-gradient(135deg, rgba(248,250,252,0.08), rgba(248,250,252,0.03))`,
-              border: `1px solid ${P.mist}18`, borderRadius: "14px",
-              display: "flex", alignItems: "center", justifyContent: "center", gap: 12,
-              cursor: "pointer", transition: "all 0.3s",
-            }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = `${P.mist}30`; e.currentTarget.style.background = `linear-gradient(135deg, rgba(248,250,252,0.12), rgba(248,250,252,0.05))`; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = `${P.mist}18`; e.currentTarget.style.background = `linear-gradient(135deg, rgba(248,250,252,0.08), rgba(248,250,252,0.03))`; }}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill={P.mist} style={{ opacity: 0.7 }}>
-                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.32 2.32-2.11 4.45-3.74 4.25z"/>
-              </svg>
-              <span style={{
-                fontFamily: "'Cormorant Garamond', serif", fontSize: "15px",
-                color: P.mist, opacity: 0.7, fontStyle: "italic",
-              }}>continue with Apple</span>
             </button>
 
             {/* Skip */}
