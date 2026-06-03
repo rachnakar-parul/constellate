@@ -1,5 +1,6 @@
 "use client";
 import { supabase } from "../lib/supabase";
+import { updateAnalytics } from "../lib/analytics";
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 
 const P = { bg: "#0F172A", night: "#1E293B", lav: "#C4B5FD", gold: "#FDE68A", rose: "#FBCFE8", ice: "#BFDBFE", mist: "#F8FAFC" };
@@ -116,22 +117,6 @@ async function save(d) {
   }
 }
 
-async function loadAuth() {
-  try {
-    const data = localStorage.getItem("grat-auth");
-    return data ? JSON.parse(data) : null;
-  } catch {
-    return null;
-  }
-}
-
-async function saveAuth(d) {
-  try {
-    localStorage.setItem("grat-auth", JSON.stringify(d));
-  } catch (e) {
-    console.error(e);
-  }
-}
 /* ── Name intelligence ── */
 const MY_PATTERN = /^my\s+/i;
 const isRelational = (name) => MY_PATTERN.test(name.trim());
@@ -1640,16 +1625,34 @@ export default function App() {
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    Promise.all([load(), loadAuth()]).then(([d, a]) => {
-      if (d?.people?.length) {
-        setPeople(d.people);
-        setAuthed(!!a);
-        setView("graph");
-      } else {
-        setView("onboarding");
-      }
-    });
-  }, []);
+  async function initialize() {
+    const { data: { session } } = await supabase.auth.getSession();
+
+    const d = await load();
+    if (d?.people) {
+     updateAnalytics(d.people);
+    }
+    if (d?.people?.length) {
+      setPeople(d.people);
+      setAuthed(!!session);
+      setView("graph");
+    } else {
+      setAuthed(!!session);
+      setView("onboarding");
+    }
+  }
+
+  initialize();
+}, []);
+useEffect(() => {
+  const {
+    data: { subscription },
+  } = supabase.auth.onAuthStateChange((_event, session) => {
+    setAuthed(!!session);
+  });
+
+  return () => subscription.unsubscribe();
+}, []);
   useEffect(() => { const el = cRef.current; if (!el) return; const ro = new ResizeObserver(e => { const { width, height } = e[0].contentRect; setDims({ w: width, h: height }); }); ro.observe(el); return () => ro.disconnect(); }, []);
 
   const cx = dims.w / 2, cy = dims.h * 0.38;
@@ -1838,12 +1841,13 @@ export default function App() {
       {/* Sign-in overlay */}
       {showSignIn && (
         <SignInOverlay
-          onSignIn={async (user) => {
-            setAuthed(true);
-            setShowSignIn(false);
-            await saveAuth({ userId: user.id, provider: user.provider });
-            if (view === "person" && selected) setView("share");
-          }}
+          onSignIn={async () => {
+          setAuthed(true);
+          setShowSignIn(false);
+          if (view === "person" && selected) {
+          setView("share");
+          }
+        }}
           onSkip={() => setShowSignIn(false)}
         />
       )}
