@@ -151,11 +151,11 @@ const starName = (name) => {
 
 /* ── Background ── */
 function Sky({ w, h }) {
-  const stars = useMemo(() => Array.from({ length: 80 }, () => ({
+  const stars = useMemo(() => Array.from({ length: 30 }, () => ({
     x: Math.random() * w, y: Math.random() * h, s: Math.random() * 1.4 + 0.3,
     o: Math.random() * 0.3 + 0.05, d: 3 + Math.random() * 6, dl: -Math.random() * 8,
   })), [w, h]);
-  const dust = useMemo(() => Array.from({ length: 18 }, () => {
+  const dust = useMemo(() => Array.from({ length: 8 }, () => {
     const cs = [P.lav, P.gold, P.rose, P.ice];
     return { x: Math.random() * w, y: Math.random() * h, s: 1 + Math.random() * 2,
       c: cs[Math.floor(Math.random() * cs.length)], o: 0.03 + Math.random() * 0.08,
@@ -231,7 +231,7 @@ function MiniConstellation({ people, width }) {
             <div style={{
               position: "absolute", top: sz + 4, left: "50%", transform: "translateX(-50%)",
               fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", color: p.color,
-              opacity: 0.5, whiteSpace: "nowrap",
+              opacity: 0.8, whiteSpace: "nowrap",
             }}>{starName(p.name)}</div>
           </div>
         );
@@ -360,7 +360,7 @@ function Onboarding({ onComplete }) {
               }} />;
             })}
           </div>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", fontStyle: "italic", color: P.mist, opacity: 0.5, marginTop: 6, letterSpacing: "2px" }}>you</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", fontStyle: "italic", color: P.mist, opacity: 0.8, marginTop: 6, letterSpacing: "2px" }}>you</p>
         </div>
 
         {/* NEW star appearing */}
@@ -431,12 +431,12 @@ function Onboarding({ onComplete }) {
           <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "34px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.85, margin: "0 0 14px", letterSpacing: "5px" }}>
             Constellate
           </p>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300, color: P.mist, opacity: 0.5, letterSpacing: "2.5px" }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300, color: P.mist, opacity: 0.8, letterSpacing: "2.5px" }}>
             see who helped you become you
           </p>
           <button onClick={() => setBeat(1)} style={{
             marginTop: 52, background: "transparent", border: `1px solid ${P.mist}18`,
-            borderRadius: "24px", padding: "13px 36px", color: P.mist, opacity: 0.45,
+            borderRadius: "24px", padding: "13px 36px", color: P.mist, opacity: 0.7,
             fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontStyle: "italic",
             cursor: "pointer", transition: "opacity 0.3s",
           }} onMouseEnter={e => e.target.style.opacity = "0.5"} onMouseLeave={e => e.target.style.opacity = "0.3"}>
@@ -469,7 +469,7 @@ function Onboarding({ onComplete }) {
               <div style={{ width: 70, height: 70, borderRadius: "50%", position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", background: `radial-gradient(circle, ${P.rose}20, transparent 70%)` }} />
               <div style={{ width: 14, height: 14, borderRadius: "50%", background: `radial-gradient(circle at 38% 33%, #fff 20%, ${P.rose} 50%, transparent 85%)`, boxShadow: `0 0 18px ${P.rose}66, 0 0 40px ${P.rose}22` }} />
             </div>
-            <p style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.65, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.6s both" }}>
+            <p style={{ position: "absolute", bottom: 180, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.9, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.6s both" }}>
               Every person who helped you become who you are is a star in your sky.
             </p>
           </div>
@@ -497,7 +497,7 @@ function Onboarding({ onComplete }) {
             {/* Center: YOU */}
             <div style={{ position: "absolute", left: cx, top: cy, transform: "translate(-50%,-50%)", textAlign: "center" }}>
               <div style={{ width: 10, height: 10, borderRadius: "50%", background: `radial-gradient(circle, ${P.mist}55, ${P.lav}22, transparent 80%)`, boxShadow: `0 0 20px ${P.mist}15`, margin: "0 auto" }} />
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", fontStyle: "italic", color: P.mist, opacity: 0.5, marginTop: 6, letterSpacing: "2px" }}>you</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", fontStyle: "italic", color: P.mist, opacity: 0.8, marginTop: 6, letterSpacing: "2px" }}>you</p>
             </div>
             <p style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.65, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.8s both" }}>
               The closer a star, the more they helped you become you.
@@ -531,7 +531,7 @@ function Onboarding({ onComplete }) {
             ))}
             <div style={{ position: "absolute", left: cx, top: cy, transform: "translate(-50%,-50%)", textAlign: "center" }}>
               <div style={{ width: 22, height: 22, borderRadius: "50%", background: `radial-gradient(circle, ${P.mist}14, ${P.lav}0a, transparent 70%)`, animation: "pulseGlow 2s ease-in-out infinite", boxShadow: `0 0 30px ${P.lav}10`, margin: "0 auto" }} />
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", fontStyle: "italic", color: P.mist, opacity: 0.5, marginTop: 6, letterSpacing: "2px" }}>you</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", fontStyle: "italic", color: P.mist, opacity: 0.8, marginTop: 6, letterSpacing: "2px" }}>you</p>
             </div>
             <p style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.65, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.6s both" }}>
               Together, they helped you become who you are.
@@ -549,7 +549,7 @@ function Onboarding({ onComplete }) {
           {[{ f: "Safe", names: "Mom, Aisha, David", c: P.rose }, { f: "Brave", names: "Mr. Torres, Priya", c: P.lav }, { f: "Loved", names: "Mom, Aisha", c: P.gold }].map((item, i) => (
             <div key={i} style={{ marginBottom: 24, textAlign: "center", opacity: 0, animation: `slowFade 1.2s ease ${0.5 + i * 0.3}s forwards` }}>
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "21px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.75, margin: "0 0 5px" }}>I am {item.f.toLowerCase()}</p>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontStyle: "italic", color: item.c, opacity: 0.55, margin: 0 }}>because of {item.names}</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontStyle: "italic", color: item.c, opacity: 0.8, margin: 0 }}>because of {item.names}</p>
               <div style={{ marginTop: 8, height: 2, borderRadius: 1, width: 90, margin: "6px auto 0", background: `linear-gradient(90deg, ${item.c}44, transparent)` }} />
             </div>
           ))}
@@ -569,17 +569,17 @@ function Onboarding({ onComplete }) {
             boxShadow: `0 4px 40px rgba(0,0,0,0.4)`,
             opacity: 0, animation: "slowFade 1.2s ease 0.4s forwards",
           }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", color: P.rose, opacity: 0.55, letterSpacing: "2px", textTransform: "uppercase", textAlign: "center", margin: "0 0 14px" }}>your star in my sky</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", color: P.rose, opacity: 0.8, letterSpacing: "2px", textTransform: "uppercase", textAlign: "center", margin: "0 0 14px" }}>your star in my sky</p>
             <div style={{ display: "flex", justifyContent: "center", gap: 8, marginBottom: 16 }}>
               {[P.mist, P.ice, P.rose, P.lav].map((c, i) => (
                 <div key={i} style={{ width: i === 2 ? 8 : 4, height: i === 2 ? 8 : 4, borderRadius: "50%", background: c, opacity: i === 2 ? 0.7 : 0.12, boxShadow: i === 2 ? `0 0 10px ${c}55` : "none" }} />
               ))}
             </div>
             <div style={{ height: 1, background: `linear-gradient(90deg, transparent, ${P.rose}18, transparent)`, margin: "0 0 16px" }} />
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", fontStyle: "italic", color: P.mist, opacity: 0.55, textAlign: "center", lineHeight: 1.7, margin: 0 }}>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", fontStyle: "italic", color: P.mist, opacity: 0.8, textAlign: "center", lineHeight: 1.7, margin: 0 }}>
               You taught me that panic is a choice.<br />You showed me what a good father looks like.
             </p>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "8px", color: P.mist, opacity: 0.34, textAlign: "center", margin: "16px 0 0", letterSpacing: "1.5px" }}>✦ constellate ✦</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "8px", color: P.mist, opacity: 0.6, textAlign: "center", margin: "16px 0 0", letterSpacing: "1.5px" }}>✦ constellate ✦</p>
           </div>
         </div>
       ),
@@ -590,7 +590,7 @@ function Onboarding({ onComplete }) {
           <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.70, textAlign: "center", margin: "0 30px 14px", lineHeight: 1.6 }}>
             Your sky is empty.
           </p>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.5, textAlign: "center", margin: "0 30px 44px" }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8, textAlign: "center", margin: "0 30px 44px" }}>
             Let's find your first star.
           </p>
           <button onClick={() => setBeat(8)} style={{
@@ -666,7 +666,7 @@ function Onboarding({ onComplete }) {
             >try a different question →</button>
             <button onClick={() => setPhase("name")} style={{
               background: "transparent", border: `1px solid ${P.mist}18`, borderRadius: "24px",
-              padding: "12px 30px", color: P.mist, opacity: 0.5, fontFamily: "'Cormorant Garamond', serif",
+              padding: "12px 30px", color: P.mist, opacity: 0.8, fontFamily: "'Cormorant Garamond', serif",
               fontSize: "14px", fontStyle: "italic", letterSpacing: "1px", cursor: "pointer", transition: "opacity 0.3s",
             }} onMouseEnter={e => e.target.style.opacity = "0.55"} onMouseLeave={e => e.target.style.opacity = "0.3"}>
               someone comes to mind
@@ -676,7 +676,7 @@ function Onboarding({ onComplete }) {
 
         {phase === "name" && (
           <div style={{ animation: "fadeUp 0.4s ease" }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.4, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 14 }}>their name</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.7, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 14 }}>their name</p>
             <input value={name} onChange={e => setName(e.target.value)} placeholder="..." autoFocus style={inp}
               onKeyDown={e => { if (e.key === "Enter" && name.trim()) setPhase("gave"); }} />
             {name.trim() && (
@@ -687,7 +687,7 @@ function Onboarding({ onComplete }) {
 
         {phase === "gave" && (
           <div style={{ animation: "fadeUp 0.4s ease" }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.4, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 14 }}>how did {appName(name)} show up for you?</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.7, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 14 }}>how did {appName(name)} show up for you?</p>
             <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
               <textarea value={gave} onChange={e => setGave(e.target.value)} placeholder="..." autoFocus rows={3} style={{ ...inp, resize: "none", lineHeight: 1.6, flex: 1 }} />
               <MicButton onResult={setGave} color={COLORS[entryNum]} />
@@ -700,7 +700,7 @@ function Onboarding({ onComplete }) {
 
         {phase === "impact" && (
           <div style={{ animation: "fadeUp 0.4s ease" }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.55, lineHeight: 1.6, marginBottom: 18 }}>{prompt.hint}</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8, lineHeight: 1.6, marginBottom: 18 }}>{prompt.hint}</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 16 }}>
               {FEELINGS.map(f => (
                 <button key={f} onClick={() => toggleF(f)} style={{
@@ -930,26 +930,26 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
         animation: "fadeUp 0.45s ease", overflowY: "auto",
       }}>
         <div style={{ padding: "24px 22px 10px" }}>
-          <button onClick={onClose} style={{ background: "none", border: "none", color: P.mist, opacity: 0.4, fontSize: "14px", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", cursor: "pointer", padding: "8px 0" }}>← back</button>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: P.mist, opacity: 0.7, fontSize: "14px", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", cursor: "pointer", padding: "8px 0" }}>← back</button>
         </div>
         <div style={{ textAlign: "center", padding: "8px 24px 24px" }}>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, fontStyle: "italic", color: P.mist, margin: 0, opacity: 0.8 }}>
             A letter for {appName(person.name)}
           </h2>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: person.color, opacity: 0.5, marginTop: 8, letterSpacing: "1.5px" }}>edit anything to make it yours</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: person.color, opacity: 0.8, marginTop: 8, letterSpacing: "1.5px" }}>edit anything to make it yours</p>
         </div>
 
         <div style={{ padding: "0 24px 12px" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.35, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 8 }}>greeting</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.6, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 8 }}>greeting</p>
           <input value={greeting} onChange={e => setGreeting(e.target.value)} style={{ ...taStyle, borderRadius: 8, padding: "10px 14px" }} />
         </div>
         <div style={{ padding: "0 24px 16px" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.35, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 8 }}>opening</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.6, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 8 }}>opening</p>
           <textarea value={opening} onChange={e => setOpening(e.target.value)} rows={3} style={taStyle} />
         </div>
 
         <div style={{ padding: "0 24px 16px" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.35, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 10 }}>moments to include</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.6, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 10 }}>moments to include</p>
           {person.entries.map((entry, i) => (
             <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 14, opacity: toggled[i] ? 1 : 0.3, transition: "opacity 0.3s" }}>
               <button onClick={() => toggle(i)} style={{
@@ -968,7 +968,7 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
                     fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", lineHeight: 1.6,
                     color: P.mist, margin: 0, fontWeight: 300, fontStyle: "italic",
                     opacity: 0.65, cursor: toggled[i] ? "text" : "default",
-                  }}>{editedTexts[i]} {toggled[i] && <span style={{ fontSize: "10px", opacity: 0.35 }}>✎</span>}</p>
+                  }}>{editedTexts[i]} {toggled[i] && <span style={{ fontSize: "10px", opacity: 0.6 }}>✎</span>}</p>
                 )}
               </div>
             </div>
@@ -976,7 +976,7 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
         </div>
 
         <div style={{ padding: "0 24px 12px" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.35, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 8 }}>closing</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: P.mist, opacity: 0.6, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 8 }}>closing</p>
           <textarea value={closing} onChange={e => setClosing(e.target.value)} rows={2} style={taStyle} />
         </div>
         <div style={{ padding: "0 24px 28px" }}>
@@ -1007,7 +1007,7 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
       animation: "fadeUp 0.5s ease", overflowY: "auto",
     }}>
       <div style={{ padding: "20px 22px 0", display: "flex", justifyContent: "space-between", alignItems: "center", zIndex: 10, position: "relative" }}>
-        <button onClick={() => setPhase("curate")} style={{ background: "none", border: "none", color: P.mist, opacity: 0.4, fontSize: "13px", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", cursor: "pointer", padding: "8px 0" }}>← edit</button>
+        <button onClick={() => setPhase("curate")} style={{ background: "none", border: "none", color: P.mist, opacity: 0.7, fontSize: "13px", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", cursor: "pointer", padding: "8px 0" }}>← edit</button>
       </div>
 
       {/* ── THE CARD (captured for image) ── */}
@@ -1056,7 +1056,7 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
               })}
               <text x={mCx} y={mCy + 16} textAnchor="middle" fontFamily="'Cormorant Garamond', serif" fontSize="8" fontStyle="italic" fill={P.mist} opacity="0.3">me</text>
             </svg>
-            <p style={{ textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "10.5px", fontStyle: "italic", color: P.mist, opacity: 0.4, letterSpacing: "2px", margin: "8px 0 0" }}>your star in my sky</p>
+            <p style={{ textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "10.5px", fontStyle: "italic", color: P.mist, opacity: 0.7, letterSpacing: "2px", margin: "8px 0 0" }}>your star in my sky</p>
           </div>
 
           <div style={{ height: 1, margin: "0 36px", background: `linear-gradient(90deg, transparent, ${person.color}20, transparent)` }} />
@@ -1067,7 +1067,7 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.85, margin: "0 0 22px" }}>{greeting}</p>
 
             {/* Opening */}
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.55, lineHeight: 1.8, margin: "0 0 22px" }}>{opening}</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8, lineHeight: 1.8, margin: "0 0 22px" }}>{opening}</p>
 
             {/* Entries flowing as sentences */}
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.75, lineHeight: 1.85, margin: "0 0 26px" }}>
@@ -1076,16 +1076,16 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
 
             {/* Closing */}
             {closing.split("\n").map((line, i) => (
-              <p key={i} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.5, lineHeight: 1.8, margin: "2px 0" }}>{line}</p>
+              <p key={i} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8, lineHeight: 1.8, margin: "2px 0" }}>{line}</p>
             ))}
 
             {/* Sign-off */}
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", fontWeight: 400, color: person.color, opacity: 0.55, margin: "18px 0 0" }}>{signoff}</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14px", fontWeight: 400, color: person.color, opacity: 0.8, margin: "18px 0 0" }}>{signoff}</p>
           </div>
 
           {/* Branding */}
           <div style={{ padding: "12px 28px 18px", textAlign: "center", borderTop: `1px solid ${P.mist}06` }}>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", color: P.mist, opacity: 0.3, letterSpacing: "2.5px", margin: 0 }}>✦ constellate ✦</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "9px", color: P.mist, opacity: 0.6, letterSpacing: "2.5px", margin: 0 }}>✦ constellate ✦</p>
           </div>
         </div>
       </div>
@@ -1094,7 +1094,7 @@ function ShareCard({ person, allPeople, positions, cx, cy, onClose }) {
       <div style={{ padding: "0 24px 44px", display: "flex", gap: 10, justifyContent: "center" }}>
         <button onClick={() => setPhase("curate")} style={{
           background: "transparent", border: `1px solid ${P.mist}15`, borderRadius: "22px",
-          padding: "12px 24px", color: P.mist, opacity: 0.45,
+          padding: "12px 24px", color: P.mist, opacity: 0.7,
           fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontStyle: "italic",
           cursor: "pointer", transition: "opacity 0.3s",
         }} onMouseEnter={e => e.target.style.opacity = "0.6"} onMouseLeave={e => e.target.style.opacity = "0.45"}>
@@ -1173,10 +1173,10 @@ function PersonView({ person, onClose, onShare, onAddMore, onUpdate, onDelete })
         ) : (
           <h2 onClick={() => setEditingName(true)} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "28px", fontWeight: 300, fontStyle: "italic", color: P.mist, margin: 0, opacity: 0.85, cursor: "pointer" }}>
             {appName(person.name)}
-            <span style={{ fontSize: "10px", opacity: 0.45, marginLeft: 6, verticalAlign: "middle" }}>✎</span>
+            <span style={{ fontSize: "10px", opacity: 0.7, marginLeft: 6, verticalAlign: "middle" }}>✎</span>
           </h2>
         )}
-        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: person.color, opacity: 0.5, marginTop: 8, letterSpacing: "2.5px", textTransform: "uppercase" }}>
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: person.color, opacity: 0.8, marginTop: 8, letterSpacing: "2.5px", textTransform: "uppercase" }}>
           {person.entries.length} {person.entries.length === 1 ? "star" : "stars"} in my sky
         </p>
       </div>
@@ -1195,7 +1195,7 @@ function PersonView({ person, onClose, onShare, onAddMore, onUpdate, onDelete })
                   <textarea value={editText} onChange={e => setEditText(e.target.value)} autoFocus rows={3}
                     style={{ width: "100%", boxSizing: "border-box", background: "transparent", border: "none", borderBottom: `1px solid ${person.color}22`, color: P.mist, fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontWeight: 300, fontStyle: "italic", padding: "4px 0", outline: "none", opacity: 0.6, resize: "none", lineHeight: 1.6 }} />
                   <div style={{ display: "flex", gap: 10, marginTop: 8 }}>
-                    <button onClick={saveEditEntry} style={{ background: "none", border: "none", color: person.color, opacity: 0.5, fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", fontStyle: "italic", cursor: "pointer" }}>save</button>
+                    <button onClick={saveEditEntry} style={{ background: "none", border: "none", color: person.color, opacity: 0.8, fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", fontStyle: "italic", cursor: "pointer" }}>save</button>
                     <button onClick={() => setEditingIdx(null)} style={{ background: "none", border: "none", color: P.mist, opacity: 0.2, fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", fontStyle: "italic", cursor: "pointer" }}>cancel</button>
                   </div>
                 </div>
@@ -1205,12 +1205,12 @@ function PersonView({ person, onClose, onShare, onAddMore, onUpdate, onDelete })
                     {entry.text}
                   </p>
                   {(entry.impact || (entry.feelings && entry.feelings.length > 0)) && (
-                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", lineHeight: 1.5, color: person.color, margin: "5px 0 0", fontWeight: 300, opacity: 0.5 }}>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", lineHeight: 1.5, color: person.color, margin: "5px 0 0", fontWeight: 300, opacity: 0.8 }}>
                       → {entry.feelings?.length ? entry.feelings.join(", ").toLowerCase() : ""}{entry.impact ? (entry.feelings?.length ? " · " : "") + entry.impact : ""}
                     </p>
                   )}
                   <div style={{ display: "flex", gap: 12, marginTop: 4 }}>
-                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: person.color, opacity: 0.35, letterSpacing: "0.5px", margin: 0 }}>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: person.color, opacity: 0.6, letterSpacing: "0.5px", margin: 0 }}>
                       {new Date(entry.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                     </p>
                     <button onClick={() => setShowDeleteConfirm(`entry-${i}`)} style={{ background: "none", border: "none", color: "#ff6b6b", opacity: 0.15, fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", fontStyle: "italic", cursor: "pointer", padding: 0 }}>remove</button>
@@ -1222,10 +1222,10 @@ function PersonView({ person, onClose, onShare, onAddMore, onUpdate, onDelete })
         ))}
       </div>
       <div style={{ padding: "0 26px 48px", textAlign: "center", display: "flex", flexDirection: "column", gap: 12, alignItems: "center" }}>
-        <button onClick={onAddMore} style={{ background: `linear-gradient(135deg, ${person.color}14, ${person.color}06)`, border: `1px solid ${person.color}22`, borderRadius: "26px", padding: "13px 30px", color: person.color, opacity: 0.45, fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "1.5px", textTransform: "lowercase", cursor: "pointer", fontStyle: "italic", transition: "all 0.3s", width: "fit-content" }}
+        <button onClick={onAddMore} style={{ background: `linear-gradient(135deg, ${person.color}14, ${person.color}06)`, border: `1px solid ${person.color}22`, borderRadius: "26px", padding: "13px 30px", color: person.color, opacity: 0.7, fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "1.5px", textTransform: "lowercase", cursor: "pointer", fontStyle: "italic", transition: "all 0.3s", width: "fit-content" }}
           onMouseEnter={e => e.target.style.opacity = "0.65"} onMouseLeave={e => e.target.style.opacity = "0.45"}
         >add another moment ✦</button>
-        <button onClick={onShare} style={{ background: "transparent", border: `1px solid ${person.color}18`, borderRadius: "26px", padding: "13px 30px", color: person.color, opacity: 0.3, fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "2px", textTransform: "lowercase", cursor: "pointer", fontStyle: "italic", transition: "all 0.3s", width: "fit-content" }}
+        <button onClick={onShare} style={{ background: "transparent", border: `1px solid ${person.color}18`, borderRadius: "26px", padding: "13px 30px", color: person.color, opacity: 0.6, fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", letterSpacing: "2px", textTransform: "lowercase", cursor: "pointer", fontStyle: "italic", transition: "all 0.3s", width: "fit-content" }}
           onMouseEnter={e => e.target.style.opacity = "0.5"} onMouseLeave={e => e.target.style.opacity = "0.3"}
         >create something to share</button>
       </div>
@@ -1251,7 +1251,7 @@ function PersonView({ person, onClose, onShare, onAddMore, onUpdate, onDelete })
             <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
               <button onClick={() => setShowDeleteConfirm(null)} style={{
                 background: "transparent", border: `1px solid ${P.mist}15`, borderRadius: "20px",
-                padding: "10px 22px", color: P.mist, opacity: 0.5, fontFamily: "'Cormorant Garamond', serif",
+                padding: "10px 22px", color: P.mist, opacity: 0.8, fontFamily: "'Cormorant Garamond', serif",
                 fontSize: "13px", fontStyle: "italic", cursor: "pointer",
               }}>keep</button>
               <button onClick={() => {
@@ -1305,13 +1305,13 @@ function SelfPortrait({ people, onClose }) {
         <button onClick={onClose} style={{ background: "none", border: "none", color: P.mist, opacity: 0.2, fontSize: "14px", fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", cursor: "pointer", padding: "8px 0" }}>← back</button>
       </div>
       <div style={{ textAlign: "center", padding: "12px 20px 32px" }}>
-        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: P.lav, opacity: 0.5, letterSpacing: "3px", textTransform: "uppercase", margin: "0 0 10px" }}>who I am because of everyone I've met</p>
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: P.lav, opacity: 0.8, letterSpacing: "3px", textTransform: "uppercase", margin: "0 0 10px" }}>who I am because of everyone I've met</p>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "28px", fontWeight: 300, fontStyle: "italic", color: P.mist, margin: 0, opacity: 0.75 }}>My portrait</h2>
       </div>
 
       {isEmpty && (
         <div style={{ padding: "20px 28px", textAlign: "center" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", fontStyle: "italic", color: P.mist, opacity: 0.5, lineHeight: 1.6 }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", fontStyle: "italic", color: P.mist, opacity: 0.8, lineHeight: 1.6 }}>
             Your portrait is just beginning. As you add more moments and reflect on what they made possible, this will fill with who you've become.
           </p>
         </div>
@@ -1325,7 +1325,7 @@ function SelfPortrait({ people, onClose }) {
                 I am {feeling.toLowerCase()}
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 5, paddingLeft: 2, alignItems: "center" }}>
-                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontStyle: "italic", color: P.mist, opacity: 0.45 }}>because of</span>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontStyle: "italic", color: P.mist, opacity: 0.7 }}>because of</span>
                 {sources.map((s, i) => (
                   <span key={i} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontStyle: "italic", color: s.color, opacity: 0.6 }}>
                     {s.name}{i < sources.length - 1 ? "," : ""}
@@ -1341,15 +1341,15 @@ function SelfPortrait({ people, onClose }) {
       {hasCustom && (
         <div style={{ padding: "0 26px 44px" }}>
           {hasChips && (
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: P.mist, opacity: 0.34, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 16 }}>in their words, through mine</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: P.mist, opacity: 0.6, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 16 }}>in their words, through mine</p>
           )}
           {!hasChips && (
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: P.mist, opacity: 0.34, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 16 }}>what they made possible</p>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", color: P.mist, opacity: 0.6, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 16 }}>what they made possible</p>
           )}
           {uniqueCustoms.map((c, i) => (
             <div key={i} style={{ marginBottom: 16, opacity: 0, animation: `fadeUp 0.4s ease ${(sorted.length + i) * 0.08}s forwards` }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14.5px", fontStyle: "italic", color: P.mist, opacity: 0.5, lineHeight: 1.6, margin: 0 }}>"{c.impact}"</p>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: c.color, opacity: 0.42, marginTop: 3 }}>— because of {c.name}</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "14.5px", fontStyle: "italic", color: P.mist, opacity: 0.8, lineHeight: 1.6, margin: 0 }}>"{c.impact}"</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "11px", color: c.color, opacity: 0.7, marginTop: 3 }}>— because of {c.name}</p>
             </div>
           ))}
         </div>
@@ -1414,16 +1414,16 @@ function AddEntry({ people, onAdd, onClose, mode = "free", prefillName = "" }) {
         </div>
       )}
       {mode === "free" && (
-        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.45, lineHeight: 1.6, marginBottom: 32 }}>Add a new star to your sky.</p>
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "17px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.7, lineHeight: 1.6, marginBottom: 32 }}>Add a new star to your sky.</p>
       )}
 
       {step === "name" && (
         <div style={{ animation: "fadeUp 0.4s ease" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.38, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 12 }}>who?</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.6, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 12 }}>who?</p>
           <input value={name} onChange={e => setName(e.target.value)} placeholder="their name" autoFocus style={inp}
             onKeyDown={e => { if (e.key === "Enter" && name.trim()) setStep("gave"); }} />
           {sug.map(s => (
-            <button key={s.id} onClick={() => { setName(s.name); setStep("gave"); }} style={{ display: "block", background: "transparent", border: "none", color: s.color, opacity: 0.4, fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontStyle: "italic", cursor: "pointer", padding: "8px 0" }}>{s.name}</button>
+            <button key={s.id} onClick={() => { setName(s.name); setStep("gave"); }} style={{ display: "block", background: "transparent", border: "none", color: s.color, opacity: 0.7, fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontStyle: "italic", cursor: "pointer", padding: "8px 0" }}>{s.name}</button>
           ))}
           {name.trim() && (
             <button onClick={() => setStep("gave")} style={{ marginTop: 22, background: "transparent", border: `1px solid ${P.mist}10`, borderRadius: "20px", padding: "10px 22px", color: P.mist, opacity: 0.22, fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontStyle: "italic", cursor: "pointer", display: "block", marginLeft: "auto" }}>next →</button>
@@ -1433,7 +1433,7 @@ function AddEntry({ people, onAdd, onClose, mode = "free", prefillName = "" }) {
 
       {step === "gave" && (
         <div style={{ animation: "fadeUp 0.4s ease" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.38, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 12 }}>how did {appName(name)} show up for you?</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "12px", color: P.mist, opacity: 0.6, letterSpacing: "2px", textTransform: "uppercase", marginBottom: 12 }}>how did {appName(name)} show up for you?</p>
           <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
             <textarea value={gave} onChange={e => setGave(e.target.value)} placeholder="..." autoFocus rows={3} style={{ ...inp, resize: "none", lineHeight: 1.6, flex: 1 }} />
             <MicButton onResult={setGave} color={P.lav} />
@@ -1446,7 +1446,7 @@ function AddEntry({ people, onAdd, onClose, mode = "free", prefillName = "" }) {
 
       {step === "impact" && (
         <div style={{ animation: "fadeUp 0.4s ease" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.5, lineHeight: 1.6, marginBottom: 16 }}>And what did that make possible for you?</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8, lineHeight: 1.6, marginBottom: 16 }}>And what did that make possible for you?</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 14 }}>
             {FEELINGS.map(f => (
               <button key={f} onClick={() => toggleF(f)} style={{
@@ -1467,7 +1467,7 @@ function AddEntry({ people, onAdd, onClose, mode = "free", prefillName = "" }) {
             <button onClick={() => onAdd({ name: name.trim(), text: gave.trim(), impact: impact.trim(), feelings: [...feelings], date: new Date().toISOString().split("T")[0] })} style={{
               marginTop: 20, background: `linear-gradient(135deg, ${P.lav}12, transparent)`,
               border: `1px solid ${P.lav}20`, borderRadius: "24px", padding: "12px 28px",
-              color: P.mist, opacity: 0.55, fontFamily: "'Cormorant Garamond', serif", fontSize: "14px",
+              color: P.mist, opacity: 0.8, fontFamily: "'Cormorant Garamond', serif", fontSize: "14px",
               fontStyle: "italic", letterSpacing: "1px", cursor: "pointer", display: "block", marginLeft: "auto",
             }}>add this star ✦</button>
           )}
@@ -1488,7 +1488,7 @@ function Afterglow({ color, onDone }) {
       backdropFilter: "blur(20px)", animation: "fadeUp 0.6s ease",
     }}>
       <div style={{ width: 14, height: 14, borderRadius: "50%", marginBottom: 34, background: `radial-gradient(circle, #fff 18%, ${color} 55%, transparent 85%)`, boxShadow: `0 0 24px 10px ${color}44, 0 0 55px 18px ${color}15`, animation: "pulseGlow 2s ease-in-out infinite" }} />
-      <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "19px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.55 }}>That's now part of who you are.</p>
+      <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "19px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8 }}>That's now part of who you are.</p>
     </div>
   );
 }
@@ -1616,7 +1616,7 @@ function SignInOverlay({ onSignIn, onSkip }) {
             <button onClick={onSkip} style={{
               background: "none", border: "none", cursor: "pointer",
               fontFamily: "'Cormorant Garamond', serif", fontSize: "13px",
-              fontStyle: "italic", color: P.mist, opacity: 0.3,
+              fontStyle: "italic", color: P.mist, opacity: 0.6,
               letterSpacing: "0.5px", transition: "opacity 0.3s",
             }}
               onMouseEnter={e => e.target.style.opacity = "0.5"}
@@ -1736,10 +1736,10 @@ export default function App() {
     <div ref={cRef} style={{
       width: "100%", height: "100vh", position: "relative", overflow: "hidden",
       background: `linear-gradient(170deg, #080e1e 0%, ${P.bg} 25%, ${P.night} 55%, #131b30 80%, #0e1525 100%)`,
-      fontFamily: "'Cormorant Garamond', Georgia, serif",
+      fontFamily: "Georgia, serif",
     }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+        /* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap'); */
         @keyframes twinkle { 0%,100% { opacity: inherit; } 50% { opacity: 0.08; } }
         @keyframes breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.07); } }
         @keyframes drift { 0% { transform: translate(0,0); } 100% { transform: translate(var(--dx),var(--dy)); } }
@@ -1762,10 +1762,10 @@ export default function App() {
 
       {isGraph && people.length === 0 && (
         <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", zIndex: 10 }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.55, textAlign: "center", margin: "0 30px 20px", lineHeight: 1.6 }}>Your sky is empty.</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "20px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8, textAlign: "center", margin: "0 30px 20px", lineHeight: 1.6 }}>Your sky is empty.</p>
           <button onClick={() => setView("onboarding")} style={{
             background: `linear-gradient(135deg, ${P.lav}12, transparent)`, border: `1px solid ${P.lav}22`,
-            borderRadius: "24px", padding: "13px 32px", color: P.mist, opacity: 0.52,
+            borderRadius: "24px", padding: "13px 32px", color: P.mist, opacity: 0.8,
             fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", fontStyle: "italic", cursor: "pointer",
           }}>add your first star ✦</button>
         </div>
@@ -1774,7 +1774,7 @@ export default function App() {
       {isGraph && people.length > 0 && (
         <>
           <div style={{ position: "absolute", top: 26, left: 0, right: 0, textAlign: "center", zIndex: 10, animation: "fadeUp 1s ease" }}>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.5, letterSpacing: "3.5px", textTransform: "lowercase", margin: 0 }}>constellate</h1>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.8, letterSpacing: "3.5px", textTransform: "lowercase", margin: 0 }}>constellate</h1>
           </div>
 
           {/* Constellation lines */}
