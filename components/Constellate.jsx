@@ -499,7 +499,7 @@ function Onboarding({ onComplete }) {
               <div style={{ width: 10, height: 10, borderRadius: "50%", background: `radial-gradient(circle, ${P.mist}55, ${P.lav}22, transparent 80%)`, boxShadow: `0 0 20px ${P.mist}15`, margin: "0 auto" }} />
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", fontStyle: "italic", color: P.mist, opacity: 0.8, marginTop: 6, letterSpacing: "2px" }}>you</p>
             </div>
-            <p style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.65, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.8s both" }}>
+            <p style={{ position: "absolute", bottom: 180, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.65, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.8s both" }}>
               The closer a star, the more they helped you become you.
             </p>
           </div>
@@ -533,7 +533,7 @@ function Onboarding({ onComplete }) {
               <div style={{ width: 22, height: 22, borderRadius: "50%", background: `radial-gradient(circle, ${P.mist}14, ${P.lav}0a, transparent 70%)`, animation: "pulseGlow 2s ease-in-out infinite", boxShadow: `0 0 30px ${P.lav}10`, margin: "0 auto" }} />
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "10px", fontStyle: "italic", color: P.mist, opacity: 0.8, marginTop: 6, letterSpacing: "2px" }}>you</p>
             </div>
-            <p style={{ position: "absolute", bottom: 80, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.65, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.6s both" }}>
+            <p style={{ position: "absolute", bottom: 180, left: 0, right: 0, textAlign: "center", fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300, fontStyle: "italic", color: P.mist, opacity: 0.65, padding: "0 30px", lineHeight: 1.7, animation: "slowFade 1.5s ease 0.6s both" }}>
               Together, they helped you become who you are.
             </p>
           </div>
@@ -1398,7 +1398,7 @@ function AddEntry({ people, onAdd, onClose, mode = "free", prefillName = "" }) {
       {mode === "prompt" && (
         <div style={{ marginBottom: 28 }}>
           <p style={{
-            fontFamily: "'Cormorant Garamond', serif", fontSize: "18px", fontWeight: 300,
+            fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 300,
             fontStyle: "italic", color: P.mist, opacity: promptFade ? 0.45 : 0, lineHeight: 1.65,
             margin: "0 0 16px", transition: "opacity 0.3s ease",
           }}>{DAILY[promptIdx]}</p>
@@ -1802,7 +1802,7 @@ export default function App() {
             <>
               {/* Two entry points */}
               <div style={{
-                position: "absolute", bottom: 28, left: 0, right: 0,
+                position: "absolute", bottom: 108, left: 0, right: 0,
                 display: "flex", justifyContent: "center", gap: 12, padding: "0 20px",
                 zIndex: 10, animation: "fadeUp 1.8s ease",
               }}>
